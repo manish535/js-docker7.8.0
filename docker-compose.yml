@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+  jasperreports_test:
+    image: retriever/jasperserver:latest
+    network_mode: bridge
+    container_name: jasperserver_test
+    #volumes:
+    #  - jasperserver:/usr/local/tomcat/webapps/jasperserver
+    ports:
+      - 7000:8080
+    extra_hosts:
+      - "storage:10.142.0.7"
+
+volumes:
+  jasperserver_test:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/cogknit/reporting_engine/build/test/jasper7.8.0
